@@ -27,13 +27,13 @@
 
                 <div class="form-group">
                     <label asp-for="ValorTotal" class="control-label"></label>
-                    <input asp-for="ValorTotal" class="form-control" />
+                    <input asp-for="ValorTotal" class="form-control" value="@Model.ValorTotal.ToString("F0")" />
                     <span asp-validation-for="ValorTotal" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="StatusServico" class="control-label"></label>
-                    <input asp-for="StatusServico" class="form-control" />
+                    <select asp-for="StatusServico" class="form-control" asp-items="ViewBag.Status"></select>
                     <span asp-validation-for="StatusServico" class="text-danger"></span>
                 </div>
 
@@ -51,13 +51,13 @@
 
                 <div class="form-group">
                     <label asp-for="IdDefeito" class="control-label">Defeito</label>
-                    <select asp-for="IdDefeito" class="form-control" asp-items="ViewBag.IdDefeito"></select>
+                    <select asp-for="IdDefeito" class="form-control" asp-items="ViewBag.Defeitos"></select>
                     <span asp-validation-for="IdDefeito" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="IdTecnico" class="control-label">Técnico</label>
-                    <select asp-for="IdTecnico" class="form-control" asp-items="ViewBag.IdTecnico"></select>
+                    <select asp-for="IdTecnico" class="form-control" asp-items="ViewBag.Tecnicos"></select>
                     <span asp-validation-for="IdTecnico" class="text-danger"></span>
                 </div>
 

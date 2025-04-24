@@ -133,24 +133,53 @@ namespace OrdemServico.Controllers
             {
                 return NotFound();
             }
+
             ViewData["IdCliente"] = new SelectList(_context.Clientes, "IdCliente", "NomeCliente", ordensServico.IdCliente);
             ViewData["IdEquipamento"] = new SelectList(_context.Equipamentos, "IdEquipamento", "NomeEquipamento", ordensServico.IdEquipamento);
 
-            var defeitoEnum = Enum.GetValues(typeof(DefeitoEnum));
-            var defeitoList = new List<SelectListItem>();
-            foreach (var value in defeitoEnum)
-            {
-                defeitoList.Add(new SelectListItem { Value = ((int)value).ToString(), Text = value.ToString() });
-            }
-            ViewData["IdDefeito"] = new SelectList(defeitoList, "Value", "Text", ordensServico.IdDefeito.ToString());
+            var status = Enum.GetValues(typeof(StatusServicoEnum))
+                .Cast<StatusServicoEnum>()
+                .Select(x => new SelectListItem
+                {
+                    Value = ((int)x).ToString(),
+                    Text = x.ToString().Replace("Aberta", "Aberta")
+                        .Replace("EmAndamento", "Em andamento")
+                        .Replace("Concluida", "Concluída")
+                        .Replace("Cancelada", "Cancelada")
+                })
+                .ToList();
 
-            var tecnicoEnum = Enum.GetValues(typeof(Tecnico.TecnicoEnum));
-            var tecnicoList = new List<SelectListItem>();
-            foreach (var value in tecnicoEnum)
-            {
-                tecnicoList.Add(new SelectListItem { Value = ((int)value).ToString(), Text = value.ToString() });
-            }
-            ViewData["IdTecnico"] = new SelectList(tecnicoList, "Value", "Text", ordensServico.IdTecnico.ToString());
+            ViewBag.Status = status;
+
+            var defeitos = Enum.GetValues(typeof(DefeitoEnum))
+                .Cast<DefeitoEnum>()
+                .Select(x => new SelectListItem
+                {
+                    Value = ((int)x).ToString(),
+                    Text = x.ToString().Replace("NaoLiga", "Não liga")
+                        .Replace("TelaAzul", "Tela azul")
+                        .Replace("Superaquecimento", "Superaquecimento")
+                        .Replace("SemConexaoComInternet", "Sem conexão com a internet")
+                        .Replace("ErroAoInicializarOSistema", "Erro ao inicializar o sistema")
+                })
+                .ToList();
+
+            ViewBag.Defeitos = defeitos;
+
+            var tecnicos = Enum.GetValues(typeof(Tecnico.TecnicoEnum))
+                .Cast<Tecnico.TecnicoEnum>()
+                .Select(x => new SelectListItem
+                {
+                    Value = ((int)x).ToString(),
+                    Text = x.ToString().Replace("ArthurDias", "Arthur Dias")
+                        .Replace("HelenSilva", "Helen Silva")
+                        .Replace("LeandroAmaral", "Leandro Amaral")
+                        .Replace("ViniciusBonfim", "Vinícius Bonfim")
+                        .Replace("WallaceOliveira", "Wallace Oliveira")
+                })
+                .ToList();
+
+            ViewBag.Tecnicos = tecnicos;
 
             return View(ordensServico);
         }
