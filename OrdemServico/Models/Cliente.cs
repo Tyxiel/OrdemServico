@@ -13,7 +13,8 @@ namespace OrdemServico.Models
         }
         [Key]
         public int IdCliente { get; set; }
-        [Required(ErrorMessage = "O nome é obrigatória.")]
+
+        [Required(ErrorMessage = "O nome do cliente é obrigatório.")]
         [StringLength(100, ErrorMessage = "O nome não pode ter mais que 100 caracteres.")]
         public string? NomeCliente { get; set; }
 

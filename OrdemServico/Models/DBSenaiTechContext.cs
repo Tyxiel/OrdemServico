@@ -43,6 +43,11 @@ namespace OrdemServico.Models
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("nomeCliente");
+
+                entity.HasMany(e => e.OrdensServicos)
+                    .WithOne(e => e.IdClienteNavigation)
+                    .HasForeignKey(e => e.IdCliente)
+                    .HasConstraintName("FK__OrdensSer__idCli__4222D4EF");
             });
 
             modelBuilder.Entity<Defeito>(entity =>
@@ -56,6 +61,11 @@ namespace OrdemServico.Models
                     .HasMaxLength(300)
                     .IsUnicode(false)
                     .HasColumnName("descricao");
+
+                entity.HasMany(e => e.OrdensServicos)
+                    .WithOne(e => e.IdDefeitoNavigation)
+                    .HasForeignKey(e => e.IdDefeito)
+                    .HasConstraintName("FK__OrdensSer__idDef__4316F928");
             });
 
             modelBuilder.Entity<Equipamento>(entity =>
@@ -69,6 +79,11 @@ namespace OrdemServico.Models
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("nomeEquipamento");
+
+                entity.HasMany(e => e.OrdensServicos)
+                    .WithOne(e => e.IdEquipamentoNavigation)
+                    .HasForeignKey(e => e.IdEquipamento)
+                    .HasConstraintName("FK__OrdensSer__idEqu__412EB0B6");
             });
 
             modelBuilder.Entity<OrdensServico>(entity =>
@@ -81,14 +96,6 @@ namespace OrdemServico.Models
                 entity.Property(e => e.DataOrdemServico)
                     .HasColumnType("date")
                     .HasColumnName("dataOrdemServico");
-
-                entity.Property(e => e.IdCliente).HasColumnName("idCliente");
-
-                entity.Property(e => e.IdDefeito).HasColumnName("idDefeito");
-
-                entity.Property(e => e.IdEquipamento).HasColumnName("idEquipamento");
-
-                entity.Property(e => e.IdTecnico).HasColumnName("idTecnico");
 
                 entity.Property(e => e.Servico)
                     .HasMaxLength(50)
@@ -103,26 +110,6 @@ namespace OrdemServico.Models
                 entity.Property(e => e.ValorTotal)
                     .HasColumnType("decimal(10, 2)")
                     .HasColumnName("valorTotal");
-
-                entity.HasOne(d => d.IdClienteNavigation)
-                    .WithMany(p => p.OrdensServicos)
-                    .HasForeignKey(d => d.IdCliente)
-                    .HasConstraintName("FK__OrdensSer__idCli__4222D4EF");
-
-                entity.HasOne(d => d.IdDefeitoNavigation)
-                    .WithMany(p => p.OrdensServicos)
-                    .HasForeignKey(d => d.IdDefeito)
-                    .HasConstraintName("FK__OrdensSer__idDef__4316F928");
-
-                entity.HasOne(d => d.IdEquipamentoNavigation)
-                    .WithMany(p => p.OrdensServicos)
-                    .HasForeignKey(d => d.IdEquipamento)
-                    .HasConstraintName("FK__OrdensSer__idEqu__412EB0B6");
-
-                entity.HasOne(d => d.IdTecnicoNavigation)
-                    .WithMany(p => p.OrdensServicos)
-                    .HasForeignKey(d => d.IdTecnico)
-                    .HasConstraintName("FK__OrdensSer__idTec__440B1D61");
             });
 
             modelBuilder.Entity<Tecnico>(entity =>
@@ -136,6 +123,34 @@ namespace OrdemServico.Models
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("nomeTecnico");
+
+                entity.HasMany(e => e.OrdensServicos)
+                    .WithOne(e => e.IdTecnicoNavigation)
+                    .HasForeignKey(e => e.IdTecnico)
+                    .HasConstraintName("FK__OrdensSer__idTec__440B1D61");
+            });
+
+            modelBuilder.Entity<OrdensServico>(entity =>
+            {
+                entity.HasOne(e => e.IdClienteNavigation)
+        .WithMany(e => e.OrdensServicos)
+        .HasForeignKey(e => e.IdCliente)
+        .HasConstraintName("FK__OrdensSer__idCli__4222D4EF");
+
+                entity.HasOne(e => e.IdDefeitoNavigation)
+                    .WithMany(e => e.OrdensServicos)
+                    .HasForeignKey(e => e.IdDefeito)
+                    .HasConstraintName("FK__OrdensSer__idDef__4316F928");
+
+                entity.HasOne(e => e.IdEquipamentoNavigation)
+                    .WithMany(e => e.OrdensServicos)
+                    .HasForeignKey(e => e.IdEquipamento)
+                    .HasConstraintName("FK__OrdensSer__idEqu__412EB0B6");
+
+                entity.HasOne(e => e.IdTecnicoNavigation)
+                    .WithMany(e => e.OrdensServicos)
+                    .HasForeignKey(e => e.IdTecnico)
+                    .HasConstraintName("FK__OrdensSer__idTec__440B1D61");
             });
 
             OnModelCreatingPartial(modelBuilder);
