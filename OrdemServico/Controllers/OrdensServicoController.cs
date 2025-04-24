@@ -53,6 +53,20 @@ namespace OrdemServico.Controllers
             ViewData["IdCliente"] = new SelectList(_context.Clientes, "IdCliente", "NomeCliente");
             ViewData["IdEquipamento"] = new SelectList(_context.Equipamentos, "IdEquipamento", "NomeEquipamento");
 
+            var status = Enum.GetValues(typeof(StatusServicoEnum))
+                .Cast<StatusServicoEnum>()
+                .Select(x => new SelectListItem
+                {
+                    Value = ((int)x).ToString(),
+                    Text = x.ToString().Replace("Aberta", "Aberta")
+                        .Replace("EmAndamento", "Em andamento")
+                        .Replace("Concluida", "Concluída")
+                        .Replace("Cancelada", "Cancelada")
+                })
+                .ToList();
+
+            ViewBag.Status = status;
+
             var defeitos = Enum.GetValues(typeof(DefeitoEnum))
                 .Cast<DefeitoEnum>()
                 .Select(x => new SelectListItem

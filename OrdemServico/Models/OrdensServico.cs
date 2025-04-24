@@ -30,7 +30,7 @@ namespace OrdemServico.Models
 
         [Required(ErrorMessage = "Status da ordem de serviço é obrigatório")]
         [EnumDataType(typeof(StatusServicoEnum))]
-        public string? StatusServico { get; set; }
+        public StatusServicoEnum StatusServico { get; set; }
 
         [Required(ErrorMessage = "Equipamento é obrigatório")]
         public int IdEquipamento { get; set; }
