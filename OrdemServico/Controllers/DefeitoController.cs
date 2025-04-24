@@ -46,24 +46,24 @@ namespace OrdemServico.Controllers
 
         // GET: Defeito/Create
         public IActionResult Create()
-        {
-            var defeitos = Enum.GetValues(typeof(DefeitoEnum))
-                .Cast<DefeitoEnum>()
-                .Select(x => new SelectListItem
-                {
-                    Value = x.ToString(),
-                    Text = x.ToString().Replace("NaoLiga", "Não liga")
-                        .Replace("TelaAzul", "Tela azul")
-                        .Replace("Superaquecimento", "Superaquecimento")
-                        .Replace("SemConexaoComInternet", "Sem conexão com a internet")
-                        .Replace("ErroAoInicializarOSistema", "Erro ao inicializar o sistema")
-                })
-                .ToList();
+    {
+        var defeitos = Enum.GetValues(typeof(DefeitoEnum))
+            .Cast<DefeitoEnum>()
+            .Select(x => new SelectListItem
+            {
+                Value = x.ToString(),
+                Text = x.ToString().Replace("NaoLiga", "Não liga")
+                    .Replace("TelaAzul", "Tela azul")
+                    .Replace("Superaquecimento", "Superaquecimento")
+                    .Replace("SemConexaoComInternet", "Sem conexão com a internet")
+                    .Replace("ErroAoInicializarOSistema", "Erro ao inicializar o sistema")
+            })
+            .ToList();
 
-            ViewBag.Defeitos = defeitos;
+        ViewBag.Defeitos = defeitos;
 
-            return View();
-        }
+        return View();
+    }
 
         // POST: Defeito/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.

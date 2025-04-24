@@ -42,11 +42,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdDefeito" class="control-label"></label>
-                <select asp-for="IdDefeito" class ="form-control" asp-items="ViewBag.IdDefeito"></select>
+                <select asp-for="IdDefeito" class="form-control" asp-items="ViewBag.Defeitos"></select>
             </div>
+
             <div class="form-group">
                 <label asp-for="IdTecnico" class="control-label"></label>
-                <select asp-for="IdTecnico" class ="form-control" asp-items="ViewBag.IdTecnico"></select>
+                <select asp-for="IdTecnico" class="form-control" asp-items="ViewBag.Tecnicos"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
