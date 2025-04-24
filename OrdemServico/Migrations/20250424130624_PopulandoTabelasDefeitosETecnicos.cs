@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System.Collections.Generic;
 
 #nullable disable
 
@@ -23,6 +24,22 @@ namespace OrdemServico.Migrations
             ('Leandro Amaral'),
             ('Vinícius Bonfim'),
             ('Wallace Oliveira');");
+
+            // Inserindo dados na tabela Defeitos
+            migrationBuilder.Sql(@"INSERT INTO Equipamentos(nomeEquipamento) VALUES
+            ('Notebook Dell Inspiron 15'),
+            ('Desktop HP ProDesk 400'),
+            ('MacBook Pro 13'),
+            ('Servidor Dell PowerEdge'),
+            ('Tablet Samsung Galaxy Tab S6');");
+
+            // Inserindo dados na tabela Tecnicos
+            migrationBuilder.Sql(@"INSERT INTO Clientes (nomeCliente) VALUES 
+            ('João Silva'),
+            ('Maria Oliveira'),
+            ('Carlos Souza'),
+            ('Ana Paula'),
+            ('Bruno Henrique');");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

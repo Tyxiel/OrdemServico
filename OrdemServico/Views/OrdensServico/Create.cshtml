@@ -12,38 +12,38 @@
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="DataOrdemServico" class="control-label"></label>
+                    <label asp-for="DataOrdemServico" class="control-label">Data da Ordem de Serviço</label>
                     <input asp-for="DataOrdemServico" class="form-control" />
                     <span asp-validation-for="DataOrdemServico" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Servico" class="control-label"></label>
+                    <label asp-for="Servico" class="control-label">Serviço</label>
                     <input asp-for="Servico" class="form-control" />
                     <span asp-validation-for="Servico" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="ValorTotal" class="control-label"></label>
+                    <label asp-for="ValorTotal" class="control-label">Valor Total</label>
                     <input asp-for="ValorTotal" class="form-control" />
                     <span asp-validation-for="ValorTotal" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="StatusServico" class="control-label"></label>
+                    <label asp-for="StatusServico" class="control-label">Status</label>
                     <select asp-for="StatusServico" class="form-control" asp-items="ViewBag.Status"></select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="IdEquipamento" class="control-label"></label>
+                    <label asp-for="IdEquipamento" class="control-label">Equipamento</label>
                     <select asp-for="IdEquipamento" class="form-control" asp-items="ViewBag.IdEquipamento"></select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="IdCliente" class="control-label"></label>
+                    <label asp-for="IdCliente" class="control-label">Cliente</label>
                     <select asp-for="IdCliente" class="form-control" asp-items="ViewBag.IdCliente"></select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="IdDefeito" class="control-label"></label>
+                    <label asp-for="IdDefeito" class="control-label">Defeito</label>
                     <select asp-for="IdDefeito" class="form-control" asp-items="ViewBag.Defeitos"></select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="IdTecnico" class="control-label"></label>
+                    <label asp-for="IdTecnico" class="control-label">Técnico</label>
                     <select asp-for="IdTecnico" class="form-control" asp-items="ViewBag.Tecnicos"></select>
                 </div>
                 <div class="form-group">
