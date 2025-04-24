@@ -21,6 +21,7 @@ namespace OrdemServico.Models
         [Required(ErrorMessage = "Data da ordem de serviço é obrigatória")]
         public DateTime DataOrdemServico { get; set; }
 
+        [Required(ErrorMessage = "O nome do serviço é obrigatória")]
         [StringLength(50, ErrorMessage = "Serviço deve ter no máximo 50 caracteres")]
         public string? Servico { get; set; }
 
