@@ -51,7 +51,8 @@ namespace OrdemServico.Migrations
             ('Juliana Freitas'),
             ('Marcelo Dias'),
             ('Tatiane Melo'),
-            ('Lucas Fernandes');");
+            ('Lucas Fernandes');
+            ('Beatriz Mendes'); ");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
