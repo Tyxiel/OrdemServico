@@ -84,3 +84,7 @@ Este projeto é um sistema completo para o gerenciamento de ordens de serviço. 
 * `/Views`: Contém os arquivos Razor (.cshtml) para a interface do usuário.
 * `Program.cs`: Arquivo principal de configuração e inicialização da aplicação.
 * `appsettings.json`: Arquivo de configurações da aplicação.
+
+## Licença
+
+Este projeto é licenciado sob a **GNU Affero General Public License v3.0**.
